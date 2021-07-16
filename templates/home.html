@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}
-Pets Home
-{% endblock %}
+{% block title %} Pets Homepage {% endblock %}
 
 {% block content %}
 
@@ -12,24 +10,30 @@ Pets Home
     <p class="alert alert-primary">{{ msg }}</p>
 {% endfor %}
 
-<ul>
-    <li><a href="/add" class="btn btn-primary">Add a pet!</a></li>
-</ul>
+<div class="btn-group" role="group" aria-label="buttons">
+    <a href="/add" class="btn btn-primary">Add a new pet</a>
+</div>
 
 <div class="pets-list">
     <ul>
         {% for pet in pets %}
-        <div class="card" style="width: 18rem;">
-            <img src="{{ pet.photo_url }}" class="card-img-top" alt="image of {{ pet.name }}">
-            <div class="card-body">
-                <h5 class="card-title"><a href="/{{ pet.id }}">{{ pet.name }}</a></h5>
-                <p class="card-text">
-                    {% if pet.available %}
-                    <b>available</b>
-                    {% endif %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{ pet.photo_url }}" 
+                    class="card-img-top" 
+                    alt="image of {{ pet.name }}">
+                    
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/{{ pet.id }}">{{ pet.name }}</a>
+                    </h5>
+
+                    <p class="card-text">
+                        {% if pet.available %}
+                            <b>Available</b>
+                        {% endif %}
                     </p>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </ul>
 </div>

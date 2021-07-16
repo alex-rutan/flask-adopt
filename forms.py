@@ -31,4 +31,4 @@ class EditPetForm(FlaskForm):
     notes = TextAreaField("Notes",
         validators=[Optional()])
     
-    available = BooleanField("Available", default='checked') # default is string? or True
+    available = BooleanField("Available", default='checked') 
