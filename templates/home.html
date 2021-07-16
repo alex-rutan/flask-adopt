@@ -4,37 +4,40 @@
 
 {% block content %}
 
-<h1>Pets</h1>
+<main class="container-fluid">
+    <h1>Pets</h1>
 
-{% for msg in get_flashed_messages() %}
-    <p class="alert alert-primary">{{ msg }}</p>
-{% endfor %}
+    {% for msg in get_flashed_messages() %}
+        <p class="alert alert-primary">{{ msg }}</p>
+    {% endfor %}
 
-<div class="btn-group" role="group" aria-label="buttons">
-    <a href="/add" class="btn btn-primary">Add a new pet</a>
-</div>
+    <div class="btn-group" role="group" aria-label="buttons">
+        <a href="/add" class="btn btn-primary">Add a new pet</a>
+    </div>
 
-<div class="pets-list">
-    <ul>
-        {% for pet in pets %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{ pet.photo_url }}" 
-                    class="card-img-top" 
-                    alt="image of {{ pet.name }}">
-                    
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a href="/{{ pet.id }}">{{ pet.name }}</a>
-                    </h5>
+    <div class="pets-list">
+        <ul>
+            {% for pet in pets %}
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ pet.photo_url }}" 
+                        class="card-img-top" 
+                        alt="image of {{ pet.name }}">
+                        
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="/{{ pet.id }}">{{ pet.name }}</a>
+                        </h5>
 
-                    <p class="card-text">
-                        {% if pet.available %}
-                            <b>Available</b>
-                        {% endif %}
-                    </p>
+                        <p class="card-text">
+                            {% if pet.available %}
+                                <b>Available</b>
+                            {% endif %}
+                        </p>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
-    </ul>
-</div>
+            {% endfor %}
+        </ul>
+    </div>
+</main>
+
 {% endblock %}
