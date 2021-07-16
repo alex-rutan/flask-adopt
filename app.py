@@ -5,7 +5,7 @@ from flask import Flask, render_template, redirect, flash
 from flask_debugtoolbar import DebugToolbarExtension
 
 from models import db, connect_db, Pet
-from forms import AddPetForm
+from forms import AddPetForm, EditPetForm
 
 app = Flask(__name__)
 
@@ -39,7 +39,7 @@ def load_homepage():
     )
     
 @app.route('/add', methods=["GET", "POST"])
-def add_pet():
+def show_add_pet_form():
     """Add pet form; handle adding."""
     
     form = AddPetForm()
@@ -57,7 +57,7 @@ def add_pet():
         return render_template('add_pet_form.html', form=form)
 
 @app.route('/<int:pet_id>', methods=["GET", "POST"])
-def display_edit_pet(pet_id):
+def display_edit_pet_form(pet_id):
     """Displays information about the pet with option to make edits to the pet."""
     
     pet = Pet.query.get_or_404(pet_id)
