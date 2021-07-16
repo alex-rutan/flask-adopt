@@ -5,7 +5,17 @@ Pets Home
 {% endblock %}
 
 {% block content %}
+
 <h1>Pets</h1>
+
+{% for msg in get_flashed_messages() %}
+    <p class="alert alert-primary">{{ msg }}</p>
+{% endfor %}
+
+<ul>
+    <li><a href="/add" class="btn btn-primary">Add a pet!</a></li>
+</ul>
+
 <div class="pets-list">
     <ul>
         {% for pet in pets %}
