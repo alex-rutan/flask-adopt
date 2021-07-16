@@ -16,6 +16,7 @@ def connect_db(app):
 
 
 class Pet(db.Model):
+    """Makes instance of Pet"""
 
     __tablename__ = 'pets'
 
