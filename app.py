@@ -7,6 +7,8 @@ from flask_debugtoolbar import DebugToolbarExtension
 from models import db, connect_db, Pet
 from forms import AddPetForm, EditPetForm
 
+from projects_secrets import API_KEY, API_SECRET
+
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = "secret"
@@ -81,3 +83,6 @@ def display_edit_pet_form(pet_id):
     else:
         return render_template('edit_pet_form.html', form=form, pet=pet)
     
+
+
+
