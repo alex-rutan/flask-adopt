@@ -22,7 +22,7 @@ Pets Home
         <div class="card" style="width: 18rem;">
             <img src="{{ pet.photo_url }}" class="card-img-top" alt="image of {{ pet.name }}">
             <div class="card-body">
-                <h5 class="card-title">{{ pet.name }}</h5>
+                <h5 class="card-title"><a href="/{{ pet.id }}">{{ pet.name }}</a></h5>
                 <p class="card-text">
                     {% if pet.available %}
                     <b>available</b>
