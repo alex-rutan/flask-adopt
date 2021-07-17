@@ -1,16 +1,23 @@
 from projects_secrets import API_KEY, API_SECRET
 
-import requests
+import requests, random
 
-TOKEN_URL = "https://api.petfinder.com/v2/oauth2/token"
-
-TOKEN_REQUEST_DICT = {"grant_type": "client_credentials", "client_id": API_KEY, "client_secret": API_SECRET}
-
-
-def get_token(TOKEN_URL, TOKEN_REQUEST_DICT):
+def get_updated_token():
     """authenticate """
 
-    resp = requests.post(TOKEN_URL, 
-                    data = TOKEN_REQUEST_DICT)
+    resp = requests.post("https://api.petfinder.com/v2/oauth2/token", 
+                    data = {"grant_type": "client_credentials", 
+                            "client_id": API_KEY, 
+                            "client_secret": API_SECRET})
 
-    print(resp)
+    return resp.json()["access_token"]
+    
+def get_pet_from_API(token):
+    """Make a GET request for one random pet."""
+    
+    resp = requests.get("https://api.petfinder.com/v2/animals",
+                        params={"limit": 100},
+                        headers={"Authorization": f"Bearer {token}"})
+    
+    return resp.json()
+    # random_num = random.randrange(0, 100)
