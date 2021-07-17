@@ -19,5 +19,6 @@ def get_pet_from_API(token):
                         params={"limit": 100},
                         headers={"Authorization": f"Bearer {token}"})
     
-    return resp.json()
-    # random_num = random.randrange(0, 100)
+    random_num = random.randrange(0, 100)
+    
+    return resp.json()["animals"][random_num]
