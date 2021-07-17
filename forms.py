@@ -17,7 +17,11 @@ class AddPetForm(FlaskForm):
         validators=[Optional(), URL()]) # usually used in conjunction with another validator
     
     age = SelectField("Age",
-        choices=[('baby', 'Baby'), ('young', 'Young'), ('adult', 'Adult'), ('senior', 'Senior')])
+        choices=[
+        ('baby', 'Baby'), 
+        ('young', 'Young'), 
+        ('adult', 'Adult'), 
+        ('senior', 'Senior')])
     
     notes = TextAreaField("Notes") # by default is Optional() 
 

@@ -19,9 +19,11 @@
         <ul>
             {% for pet in pets %}
                 <div class="card" style="width: 18rem;">
+                    {% if pet.photo_url %}
                     <img src="{{ pet.photo_url }}" 
                         class="card-img-top" 
                         alt="image of {{ pet.name }}">
+                    {% endif %}
                         
                     <div class="card-body">
                         <h5 class="card-title">
@@ -37,6 +39,18 @@
                 </div>
             {% endfor %}
         </ul>
+    </div>
+    <div>
+        <h2>Random Pet</h2>
+        <div class="card" style="width: 18rem;">
+            <img src="{{ random_pet.photos.medium }}" class="card-img-top" alt="image of {{ random_pet.name }}">
+        
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{{ random_pet.url }}">{{ random_pet.name }}</a>
+                </h5>
+            </div>
+        </div>
     </div>
 </main>
 

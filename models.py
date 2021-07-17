@@ -41,4 +41,5 @@ class Pet(db.Model):
     notes = db.Column(db.TEXT)
 
     available = db.Column(db.Boolean,
+                            nullable=False,
                             default=True) 
